@@ -48,6 +48,39 @@
 ### dynamic keyword.
 
 ## 7.Using Generics.
+// Online C# Editor for free
+// Write, Edit and Run your C# code using C# Online Compiler
+
+using System;
+using System.Collections.Generic;
+public class GenericList<T> 
+{
+    private List<T> list = new List <T> ();
+    public void Add(T item){
+        list.Add(item);
+    }
+    public T Get (int index){
+        return list[index];
+    }
+    public int ModifyVal (int val){
+        int item = Convert.ToInt32(list[val]) * 10 + 5;
+        return item;
+    }
+    
+}
+
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+        GenericList<int> intList = new GenericList<int>();
+        intList.Add(10);
+        intList.Add(20);
+        int item = intList.Get(0);
+        int item1 = intList.ModifyVal(1);
+        Console.WriteLine (item1);
+    }
+}
 ### Generic Class.
 ### Generic Method.
 ### Constraints.
