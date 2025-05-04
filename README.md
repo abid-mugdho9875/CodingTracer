@@ -50,37 +50,58 @@
 ## 7.Using Generics.
 // Online C# Editor for free
 // Write, Edit and Run your C# code using C# Online Compiler
+# 📦 Generic List Example in C#
 
+This repository demonstrates a basic implementation of a generic-style list in C#. The program shows how to add values, retrieve them, and perform a sample transformation on an integer value stored in the list.
+
+## 🧰 Features
+
+- Add items to a custom list  
+- Retrieve an item by index  
+- Modify an integer value using a custom rule:  
+  `value * 10 + 5`
+
+## 🧾 Code Example
+
+```csharp
 using System;
 using System.Collections.Generic;
-public class GenericList<T> 
-{
-    private List<T> list = new List <T> ();
-    public void Add(T item){
+
+// A simple generic-style list class
+public class GenericList {
+    private List<object> list = new List<object>();
+
+    // Adds an item to the list
+    public void Add(object item) {
         list.Add(item);
     }
-    public T Get (int index){
+
+    // Gets an item from the list by index
+    public object Get(int index) {
         return list[index];
     }
-    public int ModifyVal (int val){
-        int item = Convert.ToInt32(list[val]) * 10 + 5;
+
+    // Converts item at the given index to int, modifies it, and returns the result
+    public int ModifyVal(int index) {
+        int item = Convert.ToInt32(list[index]) * 10 + 5;
         return item;
     }
-    
 }
 
-public class HelloWorld
-{
-    public static void Main(string[] args)
-    {
-        GenericList<int> intList = new GenericList<int>();
+public class HelloWorld {
+    public static void Main(string[] args) {
+        GenericList intList = new GenericList();
         intList.Add(10);
         intList.Add(20);
-        int item = intList.Get(0);
+
+        // Retrieve and modify values
+        int item = Convert.ToInt32(intList.Get(0));
         int item1 = intList.ModifyVal(1);
-        Console.WriteLine (item1);
+
+        Console.WriteLine(item1); // Output: 205
     }
 }
+
 ### Generic Class.
 ### Generic Method.
 ### Constraints.
