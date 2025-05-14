@@ -246,6 +246,26 @@ Using generics in C#:
 ### Use of “using” keyword
 
 ## 11.Important Interfaces.
+### In C#, an interface is similar to abstract class.
+### All methods of an interface are fully abstract (method without body).
+### By convention, interface starts with I so that we can identify it just by seeing its name.
+### We cannot use access modifiers inside an interface
+### We cannot create objects of an interface
+### EXAmple:
+**interface IPolygon {
+    // method without body
+    void calculateArea(int l, int b);
+
+  }**
+### Advantage
+- Similar to abstract classes, interfaces help us to achieve abstraction in C#
+- Interfaces provide specifications that a class (which implements it) must follow.
+- Interfaces are used to achieve multiple inheritance in C#
+-  Interfaces provide loose coupling(having no or least effect on other parts of code when we change one part of a code).
+## 1. ICloneable
+- ICloneable is an interface that defines a method for cloning an object
+- To implement ICloneable, a class must define a Clone() method that returns an object of the same type as the original object
+- 
 ### IEnumerable.
 ### ICloneable.
 ### IDisposable.
