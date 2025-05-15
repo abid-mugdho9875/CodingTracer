@@ -433,7 +433,96 @@ class Program
 
 
 ### IEnumerable.
-### ICloneable.
+# 📚 LibraryProject — Exploring `IEnumerable` and Custom Iterators in C#
+
+This is a simple C# console application that demonstrates how to build a custom iterable collection using `IEnumerable<T>` and `IEnumerator<T>`. It walks through how iteration works under the hood using a basic `Library` and `Book` model.
+
+You can copy and paste the full code below into a single `Program.cs` file and run it directly in Visual Studio.
+
+---
+
+## 🚀 Features
+
+- ✅ Custom iterable class (`Library`)
+- ✅ Manual implementation of `IEnumerator<T>` (`LibraryEnumerator`)
+- ✅ LINQ support
+- ✅ Filtering, sorting, and iteration via `foreach`
+
+---
+
+## ✅ Full Code Example (Paste into Program.cs)
+
+```csharp
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace LibraryProject
+{---BOOK Class
+    public class Book
+    {
+        public string Title { get; set; }
+        public string Author { get; set; }
+        public string Genre { get; set; }
+        public int PublishedYear { get; set; }
+        public double Rating { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Title} by {Author} ({PublishedYear}) - Rating: {Rating}/5";
+        }
+    }
+----Libary_class 
+    public class Library : IEnumerable<Book>
+    {
+        private List<Book> books = new List<Book>();
+
+        public void AddBook(Book book) => books.Add(book);
+
+        public void RemoveBook(string title) =>
+            books.RemoveAll(b => b.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
+
+        public IEnumerable<Book> FindByAuthor(string author) =>
+            books.Where(b => b.Author.Equals(author, StringComparison.OrdinalIgnoreCase));
+
+        public IEnumerable<Book> GetTopRatedBooks(int count) =>
+            books.OrderByDescending(b => b.Rating).Take(count);
+
+        public IEnumerator<Book> GetEnumerator() => new LibraryEnumerator(books);
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+    }
+
+    
+---main program 
+    class Program
+    {
+        static void Main()
+        {
+            Library library = new Library();
+
+            library.AddBook(new Book { Title = "The Hobbit", Author = "J.R.R. Tolkien", Genre = "Fantasy", PublishedYear = 1937, Rating = 4.8 });
+            library.AddBook(new Book { Title = "C# in Depth", Author = "Jon Skeet", Genre = "Programming", PublishedYear = 2019, Rating = 4.9 });
+            library.AddBook(new Book { Title = "Clean Code", Author = "Robert C. Martin", Genre = "Programming", PublishedYear = 2008, Rating = 4.7 });
+            library.AddBook(new Book { Title = "Harry Potter", Author = "J.K. Rowling", Genre = "Fantasy", PublishedYear = 1997, Rating = 4.5 });
+
+            Console.WriteLine("📚 All Books:");
+            foreach (var book in library)
+                Console.WriteLine(book);
+
+            Console.WriteLine("\n🔍 Top 2 Rated Books:");
+            foreach (var book in library.GetTopRatedBooks(2))
+                Console.WriteLine(book);
+
+            Console.WriteLine("\n🎯 Books Published after 2010:");
+            var recentBooks = library.Where(b => b.PublishedYear > 2010);
+            foreach (var book in recentBooks)
+                Console.WriteLine(book);
+        }
+    }
+}
+
+
 ### IDisposable.
 ### ICollection.
 
