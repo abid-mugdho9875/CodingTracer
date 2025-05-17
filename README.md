@@ -275,13 +275,16 @@ This repository demonstrates basic **file and directory handling** in C# using t
 ---
 
 ## 📁 Project Structure
-
+```
 fileandpractice/
 ├── Program.cs
 ├── Directory_learn.cs
 └── StreamWriteExamples.cs
+```
 ✅ 1. File.WriteAllText & File.ReadAllText
-**File.WriteAllText(filePath, content);
+**
+```
+File.WriteAllText(filePath, content);
 string content = File.ReadAllText(filePath);
 
 Examples:
@@ -290,7 +293,7 @@ File.WriteAllText(path, "Hello World!");
 string content = File.ReadAllText(path);
 Console.WriteLine(content);
 
-
+```
 **
 ✅ 2. FileInfo 
 ```
