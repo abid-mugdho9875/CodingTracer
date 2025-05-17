@@ -293,7 +293,7 @@ Console.WriteLine(content);
 
 **
 ✅ 2. FileInfo 
-**
+```
 FileInfo file = new FileInfo(filePath);
 long size = file.Length;
 string fullName = file.FullName;
@@ -301,10 +301,10 @@ string fullName = file.FullName;
 Examples:
 FileInfo file = new FileInfo("test.txt");
 Console.WriteLine("File Size: " + file.Length);
-
+```
 **
 ✅ 3. Directory.CreateDirectory & Directory.Exists 
-**
+```
 Directory.CreateDirectory(folderPath);
 bool exists = Directory.Exists(folderPath);
 
@@ -312,10 +312,10 @@ Examples:
 string path = "myFolder";
 if (!Directory.Exists(path))
     Directory.CreateDirectory(path);
-
+```
 **
 ✅ 4. DirectoryInfo.GetFiles
-**
+```
 DirectoryInfo dir = new DirectoryInfo(folderPath);
 FileInfo[] files = dir.GetFiles();
 
@@ -323,10 +323,11 @@ Examples:
 DirectoryInfo dir = new DirectoryInfo("myFolder");
 foreach (FileInfo file in dir.GetFiles())
     Console.WriteLine(file.Name);
-
+```
 **
 ✅ 5. StreamWriter
 **
+```
 using (StreamWriter writer = new StreamWriter(filePath))
 {
     writer.WriteLine("text");
@@ -338,10 +339,11 @@ using (StreamWriter writer = new StreamWriter("stream.txt"))
     writer.WriteLine("Line 1");
     writer.WriteLine("Line 2");
 }
-
+```
 **
 ✅ 6. StreamReader
 **
+```
 using (StreamReader reader = new StreamReader(filePath))
 {
     string line;
@@ -358,15 +360,16 @@ using (StreamReader reader = new StreamReader("stream.txt"))
     while ((line = reader.ReadLine()) != null)
         Console.WriteLine(line);
 }
-
+```
 **
 ✅ 7. using 
 **
+```
 using (StreamWriter writer = new StreamWriter("log.txt"))
 {
     writer.WriteLine("Logging this.");
 }
-
+```
 **
 
 ## 11.Important Interfaces.
